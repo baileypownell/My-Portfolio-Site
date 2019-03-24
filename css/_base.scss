@@ -1,0 +1,133 @@
+/* Variables */
+
+$primary-color: #FF0F83;
+$secondary-color: #00bb12;
+$tertiary-color: pink;
+
+
+/* Mixins */
+
+@mixin prefix($property, $value, $prefixes: ()) {
+  @each $prefix in $prefixes {
+    #{'-' + $prefix + '-' + $property}: $value;
+  }
+}
+
+@mixin video-image-overlay {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  transition-property: background-color, width;
+  transition-duration: .5s;
+}
+
+@mixin button {
+  cursor: pointer;
+  border-radius: 40px;
+  font-family: 'Lekton', serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: $primary-color;
+  background-color: white;
+  border: 3px solid $tertiary-color;
+  outline: none;
+  transition: background-color, transform, -webkit-transform, -ms-transform, border, .3s;
+  &:hover {
+    @include prefix(transform, scale(1.1), webkit ms);
+    border: 3px solid $primary-color;
+    background-color: $tertiary-color;
+  }
+  a {
+    color: $primary-color;
+  }
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Media query mixins */
+
+@mixin desktop {
+  @media screen and (min-width: 900px) {
+    @content;
+  }
+}
+
+@mixin large-desktop {
+  @media screen and (min-width: 1500px) {
+    @content;
+  }
+}
+
+/* Media query to ensure that the inline Javascript display property (none) from slideToggle that was applied on mobile view is removed when the browser is resized to a larger screen */
+
+@media screen and (min-width: 900px) {
+  nav {
+    display: block !important;
+  }
+  
+}
+
+
+
+/* =========================
+        GENERAL
+===========================*/
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+:root {
+  font-size: 16px;
+  @include desktop {
+    font-size: 18px;
+  }
+}
+
+html, body {
+  margin: 0px;
+  font-family: 'Lekton', sans-serif;
+  color: white;
+  background-color: #191919;
+  scroll-behavior: smooth;
+}
+
+
+h1 {
+  color: $primary-color;
+  margin: auto;
+  padding-top: 10px;
+  font-family: 'Special Elite', cursive;
+  font-size: 2.75rem;
+  transition-property: font-size;
+  transition-duration: 1s;
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+}
+
+h2 {
+  color: #FF0F83;
+  font-size: 2.5rem;
+  font-family: 'Special Elite', cursive;
+  padding: 0;
+}
+
+p,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.75;
+  margin: 0;
+  padding: 1vw 0;
+}
