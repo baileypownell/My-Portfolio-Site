@@ -87,48 +87,25 @@ nav ul li a {
 /* =========================
       MAIN VIDEO/IMAGE
 ===========================*/
-
-#video-container video {
-  display: none;
-  @include desktop {
-    display: block;
-    height: 100%;
-    object-fit: cover;
-  }
-}
-
-#video-container {
-  position: relative;
-  height: 500px;
-  overflow: hidden;
-  top: 0;
-  @include desktop {
-    height: Calc(100vh - 80px);
-  }
-}
-
-#mobile-home-image {
+#main-image {
+  background-image: url("https://res.cloudinary.com/djad06sng/image/upload/v1548354309/sai-kiran-anagani-61187-unsplash.jpg"), linear-gradient(45deg, rgba(246, 96, 164, 0.59), rgba(202, 21, 232, 0.59),  rgba(18, 228, 0, 0.59));
+  background-blend-mode: overlay;
   width: 100%;
-  height: 500px;
-  object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  @include desktop {
-    display: none;
-  }
+  height: Calc(100vh - 80px);
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 #trifecta-container {
   position: absolute;
-  top: 0px;
+  top: 80px;
   @include flex-column;
   justify-content: space-between;
   width: 100%;
-  height: 100%;
-  @include desktop {
-    flex-direction: row;
-  }
+  height: Calc(100vh - 80px);
+  overflow: hidden;
   h1 {
     border-top: 2px solid white;
     border-bottom: 2px solid white;
@@ -147,7 +124,6 @@ nav ul li a {
   @include video-image-overlay;
 }
 
-
 .video-overlay3 {
   background: rgba(246, 96, 164, 0.50);
   @include video-image-overlay;
@@ -155,23 +131,29 @@ nav ul li a {
 
 .video-overlay1:hover {
   background: rgba(0, 188, 18, 0.40);
-  @include desktop {
-    width: 200vw;
-  }
 }
 
 .video-overlay2:hover {
   background: rgba(135, 15, 255, 0.40);
-  @include desktop {
-    width: 200vw;
-  }
 }
 
 .video-overlay3:hover {
   background-color: rgba(246, 96, 164, 0.70);
-  @include desktop {
-    width: 200vw;
-  }
+}
+
+.video-overlay1 h1,
+.video-overlay2 h1,
+.video-overlay3 h1, {
+  transition-property: transform, -webkit-transform, -ms-transform;
+  transition-duration: .5s;
+}
+
+.video-overlay1:hover h1,
+.video-overlay2:hover h1,
+.ovideo-overlay3:hover h1 {
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
 }
 
 /* =========================

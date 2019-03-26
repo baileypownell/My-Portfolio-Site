@@ -18,7 +18,7 @@ $tertiary-color: pink;
   width: 100%;
   height: 100%;
   display: flex;
-  transition-property: background-color, width;
+  transition-property: background-color, transform;
   transition-duration: .5s;
 }
 
@@ -69,7 +69,7 @@ $tertiary-color: pink;
   nav {
     display: block !important;
   }
-  
+
 }
 
 
