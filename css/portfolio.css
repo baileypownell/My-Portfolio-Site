@@ -156,7 +156,10 @@ nav ul li a {
 #mobile-home-image {
   width: 100%;
   height: 500px;
-  object-fit: cover; }
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0; }
   @media screen and (min-width: 900px) {
     #mobile-home-image {
       display: none; } }
@@ -231,7 +234,7 @@ nav ul li a {
   padding: 80px 0 0 0; }
 
 #sub-container {
-  padding: 2vw 10vw;
+  padding: 10vw;
   background-image: linear-gradient(335deg, black 65%, #323232); }
   @media screen and (min-width: 900px) {
     #sub-container {
@@ -256,9 +259,13 @@ nav ul li a {
 .contact-container {
   color: #FF0F83;
   background-color: white;
-  padding: 2vw 10vw 5vw 10vw;
+  padding: 10vw;
   width: 100%;
   text-align: center; }
+  @media screen and (min-width: 900px) {
+    .portfolio-container,
+    .contact-container {
+      padding: 2vw 10vw 5vw 10vw; } }
 
 #gallery {
   padding-top: 25px;
@@ -339,16 +346,16 @@ nav ul li a {
       transition: transform, -webkit-transform, -ms-transform, .5s; } }
 
 .one {
-  background-image: url("../images/portfolio-examples/index.PNG"); }
+  background-image: url("../images/portfolio-examples/index.jpg"); }
 
 .two {
-  background-image: url("../images/portfolio-examples/millsFarmsHome.PNG"); }
+  background-image: url("../images/portfolio-examples/millsFarmsHome.jpg"); }
 
 .three {
-  background-image: url("../images/portfolio-examples/swchome.PNG"); }
+  background-image: url("../images/portfolio-examples/swchome.jpg"); }
 
 .four {
-  background-image: url("../images/portfolio-examples/ISBA.PNG"); }
+  background-image: url("../images/portfolio-examples/ISBA.jpg"); }
 
 /* Modal Window */
 .modal {
@@ -365,7 +372,6 @@ nav ul li a {
 .modal-content {
   background-color: white;
   margin: 80px 0 0 0;
-  min-height: 450px;
   width: 100%;
   box-shadow: 10px 1px 40px rgba(51, 51, 51, 0.53);
   animation-name: modalopen;
@@ -378,7 +384,8 @@ nav ul li a {
   text-align: center;
   color: black; }
   .modal-inner-content h2 {
-    font-size: 1.5rem; }
+    font-size: 1.5rem;
+    padding-top: 40px; }
   .modal-inner-content img {
     max-width: 100%; }
     @media screen and (min-width: 900px) {
@@ -445,7 +452,7 @@ nav ul li a {
 ===========================*/
 .about-container {
   text-align: center;
-  padding: 5vw 5vw;
+  padding: 10vw;
   background-image: linear-gradient(145deg, black 65%, #323232); }
   @media screen and (min-width: 900px) {
     .about-container {
@@ -587,7 +594,7 @@ button {
 /* modal button back and forth buttons */
 .slide-button {
   background-color: rgba(0, 0, 0, 0.42);
-  width: 90%; }
+  width: 50%; }
   .slide-button:hover {
     background-color: rgba(0, 0, 0, 0.65); }
   @media screen and (min-width: 900px) {
