@@ -84,11 +84,14 @@ header {
 nav {
   position: absolute;
   /* positioned absolutely to header element */
-  background-color: rgba(0, 135, 18, 0.55);
+  background-color: rgba(0, 187, 18, 0.78);
   text-align: right;
   top: 100%;
   width: 100%;
-  display: none; }
+  opacity: 0;
+  height: 0;
+  transition-property: height opacity;
+  transition-duration: 450ms; }
   @media screen and (min-width: 900px) {
     nav {
       all: unset;
@@ -114,30 +117,25 @@ nav ul li a {
   transition-duration: .5s; }
   nav ul li a:hover {
     color: #00bb12;
-    background-color: rgba(34, 34, 34, 0.75); }
+    background-color: rgba(0, 0, 0, 0.75); }
   @media screen and (min-width: 900px) {
     nav ul li a {
       all: unset;
       padding: 10px;
-      color: #FF0F83;
       font-size: 25px;
       border: 2px solid black;
       font-family: 'Special Elite', cursive;
       transition-property: color, border, cursor, padding;
-      transition-duration: .5s; }
+      transition-duration: .75s; }
       nav ul li a:hover {
-        color: #FF0F83;
-        background-color: black;
-        border: 2px solid #FF0F83;
-        cursor: pointer;
-        padding-left: 40px;
-        padding-right: 40px; } }
+        color: #55ff65;
+        cursor: pointer; } }
 
 /* =========================
       MAIN VIDEO/IMAGE
 ===========================*/
 #main-image {
-  background-image: url("https://res.cloudinary.com/djad06sng/image/upload/v1548354309/sai-kiran-anagani-61187-unsplash.jpg"), linear-gradient(45deg, rgba(246, 96, 164, 0.59), rgba(202, 21, 232, 0.59), rgba(18, 228, 0, 0.59));
+  background-image: url("../images/code.jpg"), linear-gradient(45deg, rgba(246, 96, 164, 0.59), rgba(202, 21, 232, 0.59), rgba(18, 228, 0, 0.59));
   background-blend-mode: overlay;
   width: 100%;
   height: Calc(100vh - 80px);
@@ -205,7 +203,7 @@ nav ul li a {
 
 .video-overlay1:hover h1,
 .video-overlay2:hover h1,
-.ovideo-overlay3:hover h1 {
+.video-overlay3:hover h1 {
   -webkit-transform: scale(1.2);
   -ms-transform: scale(1.2);
   transform: scale(1.2); }
@@ -602,6 +600,11 @@ button {
 .fas {
   font-size: 1.25rem; }
 
+/* JS menu toggle effect on mobile */
+.is-visible {
+  height: auto;
+  opacity: 1; }
+
 /* JS Slide effects */
 @keyframes move-in {
   from {
@@ -646,4 +649,4 @@ button {
   to {
     opacity: 1; } }
 
-/*# sourceMappingURL=portfolio.css.map */
+/*# sourceMappingURL=main.css.map */
