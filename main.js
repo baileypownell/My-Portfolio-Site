@@ -1,59 +1,17 @@
-// Navigation Menu
 
-// Function to close and open menu on mobile
-function toggleNav() {
-  $('nav').slideToggle(500);
-};
+let hamburger = document.querySelector('.menu-toggle');
+let nav = document.querySelector('nav');
 
 
-// making an array of modal windows to later use to define "i":
-const modalWindows = document.querySelectorAll('.modal');
-const modalArray = Array.from(modalWindows);
-
-// loop to automatically know which button is used, and which modal to open:
-for ( i = 0; i < modalArray.length; i++){
-
-  // select the right modal element
-  let modal = modalArray[i];
-
-  // select the right "open modal" button
-  const learnMore = Array.from(document.querySelectorAll('.modalBtn'));
-  let openButton = learnMore[i];
-  // select the right "close button"
-  const closeButtonArray = Array.from(document.querySelectorAll('.closeBtn'));
-  let closeButton = closeButtonArray[i];
-
-  // Listen for open click on modalBtn
-  openButton.addEventListener('click', openModal);
-
-  // Listen for close click on modalBtn
-  closeButton.addEventListener('click', closeModal);
-
-  // Listen outside click to close modal
-  window.addEventListener('click', clickOutside);
-
-  //function to open modal
-  function openModal(){
-    $(modal).fadeIn()
-    // modal.style.display = 'block';
+hamburger.addEventListener('click', () => {
+  if (nav.classList.contains('is-visible')) {
+    nav.classList.remove('is-visible');
+  } else {
+   nav.classList.add('is-visible');
   }
+});
 
-  //function to close modal
-  function closeModal(){
-    $(modal).fadeOut()
-    // modal.style.display = 'none';
-  }
-
-  //function to close outside of x checkbox
-  function clickOutside(e) {
-    if (e.target == modal) {
-      $(modal).fadeOut()
-      // modal.style.display= 'none';
-    }
-  }
-}
-
-// FUNCTION FOR SLIDING IMAGES INSIDE A MODAL
+const modal = Array.from(document.getElementsByClassName('modal'));
 
 // making an arrays of all the slides (not used as of yet)
 const beckley = Array.from(document.getElementsByClassName('mySlides1'));
@@ -63,89 +21,127 @@ const isba = Array.from(document.getElementsByClassName('mySlides4'));
 
 const masterArray = [beckley, mills, sweetwater, isba];
 
-let slideIndex = 1; // first picture/div
- showDivs(slideIndex); // call to function to display said first image
+// Event handling
 
-// this function called by the button; it subtracts one or  adds one to the slideIndex
+// Function for Beckley Law
+let slideIndex = 1; // first picture/div
+showDivs(slideIndex); // call to function to display said first image
+function showDivs(n) {
+  let j;
+  var x = masterArray[0];
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (j = 0; j < x.length; j++) {
+    x[j].style.display = "none";
+    }
+    x[slideIndex-1].style.display = "block"; // on first run, displays first image because x is an array of mySlides, and we are getting the first one (index of 0) since 1 - 1 = 0.
+  }
 function plusDivs(n) {
   showDivs(slideIndex += n);
 }
 
-// Function for Beckley Law
-
-
-  function showDivs(n) {
-
-
-    let j;
-    var x = masterArray[0];
-    if (n > x.length) {slideIndex = 1}
-    if (n < 1) {slideIndex = x.length}
-    for (j = 0; j < x.length; j++) {
-      x[j].style.display = "none";
+// Function for Mills
+let slideIndex2 = 1; // first picture/div
+showDivs2(slideIndex2); // call to function to display said first image
+function showDivs2(n) {
+  let j;
+  var x = masterArray[1];
+  if (n > x.length) {slideIndex2 = 1}
+  if (n < 1) {slideIndex2 = x.length}
+  for (j = 0; j < x.length; j++) {
+    x[j].style.display = "none";
     }
-    x[slideIndex-1].style.display = "block"; // on first run, displays first image because x is an array of mySlides, and we are getting the first one (index of 0) since 1 - 1 = 0.
+    x[slideIndex2-1].style.display = "block"; // on first run, displays first image because x is an array of mySlides, and we are getting the first one (index of 0) since 1 - 1 = 0.
   }
-
-
-// Mills Function
-
-showDivs2(slideIndex);
-
 function plusDivs2(n) {
-  showDivs2(slideIndex += n);
+  showDivs2(slideIndex2 += n);
 }
 
-  function showDivs2(n) {
-    let j;
-    var x = masterArray[1];
-    if (n > x.length) {slideIndex = 1}
-    if (n < 1) {slideIndex = x.length}
-    for (j = 0; j < x.length; j++) {
-      x[j].style.display = "none";
+// Function for SWC
+let slideIndex3 = 1; // first picture/div
+showDivs3(slideIndex3); // call to function to display said first image
+function showDivs3(n) {
+  let j;
+  var x = masterArray[2];
+  if (n > x.length) {slideIndex3 = 1}
+  if (n < 1) {slideIndex3 = x.length}
+  for (j = 0; j < x.length; j++) {
+    x[j].style.display = "none";
     }
-    x[slideIndex-1].style.display = "block"; // on first run, displays first image because x is an array of mySlides, and we are getting the first one (index of 0) since 1 - 1 = 0.
+    x[slideIndex3-1].style.display = "block"; // on first run, displays first image because x is an array of mySlides, and we are getting the first one (index of 0) since 1 - 1 = 0.
   }
-
-// Sweetwater Cakes Function
-
-showDivs3(slideIndex);
-
 function plusDivs3(n) {
-  showDivs3(slideIndex += n);
+  showDivs3(slideIndex3 += n);
 }
 
-  function showDivs3(n) {
-    let j;
-    var x = masterArray[2];
-    if (n > x.length) {slideIndex = 1}
-    if (n < 1) {slideIndex = x.length}
-    for (j = 0; j < x.length; j++) {
-      x[j].style.display = "none";
+// Function for ISBA
+let slideIndex4 = 1; // first picture/div
+showDivs4(slideIndex4); // call to function to display said first image
+function showDivs4(n) {
+  let j;
+  var x = masterArray[3];
+  if (n > x.length) {slideIndex4 = 1}
+  if (n < 1) {slideIndex4 = x.length}
+  for (j = 0; j < x.length; j++) {
+    x[j].style.display = "none";
     }
-    x[slideIndex-1].style.display = "block"; // on first run, displays first image because x is an array of mySlides, and we are getting the first one (index of 0) since 1 - 1 = 0.
+    x[slideIndex4-1].style.display = "block"; // on first run, displays first image because x is an array of mySlides, and we are getting the first one (index of 0) since 1 - 1 = 0.
   }
-
-// ISBA Function
-
-showDivs4(slideIndex);
-
 function plusDivs4(n) {
-  showDivs4(slideIndex += n);
+  showDivs4(slideIndex4 += n);
 }
 
-  function showDivs4(n) {
-    let j;
-    var x = masterArray[3];
-    if (n > x.length) {slideIndex = 1}
-    if (n < 1) {slideIndex = x.length}
-    for (j = 0; j < x.length; j++) {
-      x[j].style.display = "none";
-    }
-    x[slideIndex-1].style.display = "block"; // on first run, displays first image because x is an array of mySlides, and we are getting the first one (index of 0) since 1 - 1 = 0.
+document.addEventListener('click', function (event) {
+  if (event.target.matches('#beckley')) {
+    modal[0].style.display = "block";
+  }
+  if (event.target.matches('#mills')) {
+    modal[1].style.display = "block";
+	}
+  if (event.target.matches('#swc')) {
+    modal[2].style.display = "block";
+	}
+  if (event.target.matches('#isba')) {
+    modal[3].style.display = "block";
+	}
+	if (event.target.matches('#closeOne')) {
+		modal[0].style.display = "none";
+	}
+  if (event.target.matches('#closeTwo')) {
+		modal[1].style.display = "none";
+	}
+  if (event.target.matches('#closeThree')) {
+		modal[2].style.display = "none";
+	}
+  if (event.target.matches('#closeFour')) {
+		modal[3].style.display = "none";
+	}
+  if (event.target.matches('.forward')) {
+    plusDivs(1);
+  }
+  if (event.target.matches('.backward')) {
+    plusDivs(-1);
+  }
+  if (event.target.matches('.forward2')) {
+    plusDivs2(1);
+  }
+  if (event.target.matches('.backward2')) {
+    plusDivs2(-1);
+  }
+  if (event.target.matches('.forward3')) {
+    plusDivs3(1);
+  }
+  if (event.target.matches('.backward3')) {
+    plusDivs3(-1);
+  }
+  if (event.target.matches('.forward4')) {
+    plusDivs4(1);
+  }
+  if (event.target.matches('.backward4')) {
+    plusDivs4(-1);
   }
 
-
+}, false);
 
 // animations for fading in and resizing:
 
@@ -219,4 +215,5 @@ function plusDivs4(n) {
       init: init
     };
   };
+
   slideHTML().init();
