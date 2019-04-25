@@ -18,8 +18,9 @@ const beckley = Array.from(document.getElementsByClassName('mySlides1'));
 const mills = Array.from(document.getElementsByClassName('mySlides2'));
 const sweetwater = Array.from(document.getElementsByClassName('mySlides3'));
 const isba = Array.from(document.getElementsByClassName('mySlides4'));
+const ajax = Array.from(document.getElementsByClassName('mySlides5'));
 
-const masterArray = [beckley, mills, sweetwater, isba];
+const masterArray = [beckley, mills, sweetwater, isba, ajax];
 
 // Event handling
 
@@ -91,6 +92,23 @@ function plusDivs4(n) {
   showDivs4(slideIndex4 += n);
 }
 
+// Function for AJAX
+let slideIndex5 = 1; // first picture/div
+showDivs5(slideIndex5); // call to function to display said first image
+function showDivs5(n) {
+  let j;
+  var x = masterArray[4];
+  if (n > x.length) {slideIndex5 = 1}
+  if (n < 1) {slideIndex4 = x.length}
+  for (j = 0; j < x.length; j++) {
+    x[j].style.display = "none";
+    }
+    x[slideIndex5-1].style.display = "block"; // on first run, displays first image because x is an array of mySlides, and we are getting the first one (index of 0) since 1 - 1 = 0.
+  }
+function plusDivs5(n) {
+  showDivs5(slideIndex5 += n);
+}
+
 document.addEventListener('click', function (event) {
   if (event.target.matches('#beckley')) {
     modal[0].style.display = "block";
@@ -104,6 +122,9 @@ document.addEventListener('click', function (event) {
   if (event.target.matches('#isba')) {
     modal[3].style.display = "block";
 	}
+  if (event.target.matches('#ajax')) {
+    modal[4].style.display = "block";
+	}
 	if (event.target.matches('#closeOne')) {
 		modal[0].style.display = "none";
 	}
@@ -115,6 +136,9 @@ document.addEventListener('click', function (event) {
 	}
   if (event.target.matches('#closeFour')) {
 		modal[3].style.display = "none";
+	}
+  if (event.target.matches('#closeFive')) {
+		modal[4].style.display = "none";
 	}
   if (event.target.matches('.forward')) {
     plusDivs(1);
@@ -139,6 +163,12 @@ document.addEventListener('click', function (event) {
   }
   if (event.target.matches('.backward4')) {
     plusDivs4(-1);
+  }
+  if (event.target.matches('.forward5')) {
+    plusDivs5(1);
+  }
+  if (event.target.matches('.backward5')) {
+    plusDivs5(-1);
   }
 
 }, false);
