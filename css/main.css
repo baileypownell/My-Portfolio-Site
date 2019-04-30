@@ -87,10 +87,12 @@ nav {
   text-align: right;
   top: 100%;
   width: 100%;
+  -webkit-transform: translateX(-1500px);
+  -ms-transform: translateX(-1500px);
+  transform: translateX(-1500px);
   opacity: 0;
-  height: 0;
-  transition-property: height opacity;
-  transition-duration: 450ms; }
+  transition-property: all; /* it has to be all, or else when you toggle the class the transition only applies when you apply the class and not when you remove it */
+  transition-duration: .9s; }
   @media screen and (min-width: 900px) {
     nav {
       all: unset;
@@ -352,7 +354,10 @@ nav ul li a {
 
 /* Modal Window */
 .modal {
-  display: none;
+  /* display: none; */
+  opacity: 0;
+  transform: translateY(-1500px);
+  transition: opacity .75s;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -360,15 +365,14 @@ nav ul li a {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.6); }
+  background-color: rgba(0, 0, 0, 0.6);
+}
 
 .modal-content {
   background-color: white;
   margin: 80px 0 0 0;
   width: 100%;
-  box-shadow: 10px 1px 40px rgba(51, 51, 51, 0.53);
-  animation-name: modalopen;
-  animation-duration: 1s; }
+  box-shadow: 10px 1px 40px rgba(51, 51, 51, 0.53); }
 
 .modal-inner-content {
   display: flex;
@@ -440,6 +444,29 @@ nav ul li a {
       height: 35%;
       padding: 0 1vw; } }
 
+  .mySlides1,
+  .mySlides2,
+  .mySlides3,
+  .mySlides4,
+  .mySlides5 {
+    /* Fading animation */
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
+
+  @-webkit-keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+  }
+
+  @keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+  }
+
+
 /* =========================
         ABOUT
 ===========================*/
@@ -508,7 +535,9 @@ nav ul li a {
 .last-words {
   font-size: 1.5rem;
   line-height: 1.3;
-  font-family: 'Lekton', sans-serif; }
+  font-family: 'Lekton', sans-serif;
+  transition-property: transform, opacity;
+  transition-duration: 1s; }
 
 /* =========================
         FOOTER
@@ -550,17 +579,6 @@ footer {
     -ms-transform: scale(1.2) rotateY(360deg);
     color: rgba(7, 199, 51, 0.85); }
 
-/* fade effect  */
-@keyframes fade-in {
-  from {
-    opacity: 0; }
-  to {
-    opacity: 1; } }
-.hidden {
-  opacity: 0; }
-
-.fade-in-element {
-  animation: fade-in 2.5s; }
 
 /* portfolio button styling */
 button {
@@ -611,54 +629,56 @@ button {
 .fas {
   font-size: 1.25rem; }
 
-/* JS hamburger menu class */
+
 /* JS menu toggle effect on mobile */
+
 .is-visible {
-  height: auto;
-  opacity: 1; }
+  -webkit-transform: translateX(0px);
+  -ms-transform: translateX(0px);
+  transform: translateX(0px);
+  opacity: 1;
+}
 
-/* JS Slide effects */
-@keyframes move-in {
-  from {
-    opacity: 0;
-    transform: translateX(-500px); }
-  to {
-    opacity: 1;
-    transform: translateX(0); } }
-@keyframes move-in-right {
-  from {
-    opacity: 0;
-    transform: translateX(500px); }
-  to {
-    opacity: 1;
-    transform: translateX(0); } }
-.moved,
+/* JS class for modal opening/closing */
+.show {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.unshow {
+  opacity: 0;
+  transform: translateY(-1500px);
+}
+
+/* JS Slide effects for text at the bottom of page */
+
+.moved-left {
+  opacity: 0;
+  transform: translateX(-500px);
+}
+
 .moved-right {
-  opacity: 0; }
+  opacity: 0;
+  transform: translateX(500px);
+}
 
-.move-in-element {
-  animation: move-in 1s; }
+.moved-center {
+  opacity: 1;
+  transform: translateX(0px);
+}
 
-.move-in-element-right {
-  animation: move-in-right 1s; }
+/* fade effect for page sections  */
 
-/* fade effect  */
-@keyframes fade-in {
-  from {
-    opacity: 0; }
-  to {
-    opacity: 1; } }
-.hidden {
-  opacity: 0; }
+.faded {
+  opacity: 0;
+  transform: translateY(30px);
+  transition-property: translate opacity;
+  transition-duration: 1s;
+}
 
-.fade-in-element {
-  animation: fade-in 2.5s; }
-
-/* modal open effect */
-@keyframes modalopen {
-  from {
-    opacity: 0; }
-  to {
-    opacity: 1; } }
+.fade-in {
+  opacity: 1;
+  transform: translateY(0px);
+}
 
 /*# sourceMappingURL=main.css.map */
