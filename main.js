@@ -2,18 +2,13 @@
 let hamburger = document.querySelector('.menu-toggle');
 let nav = document.querySelector('nav');
 
-
 hamburger.addEventListener('click', () => {
-  if (nav.classList.contains('is-visible')) {
-    nav.classList.remove('is-visible');
-  } else {
-   nav.classList.add('is-visible');
-  }
+  nav.classList.toggle('is-visible');
 });
 
 const modal = Array.from(document.getElementsByClassName('modal'));
 
-// making an arrays of all the slides (not used as of yet)
+// making an arrays of all the slides
 const beckley = Array.from(document.getElementsByClassName('mySlides1'));
 const mills = Array.from(document.getElementsByClassName('mySlides2'));
 const sweetwater = Array.from(document.getElementsByClassName('mySlides3'));
@@ -22,7 +17,8 @@ const ajax = Array.from(document.getElementsByClassName('mySlides5'));
 
 const masterArray = [beckley, mills, sweetwater, isba, ajax];
 
-// Event handling
+// FUNCTIONS FOR EACH MODAL
+// This code could be a lot shorter and cleaner; I think using objects with methods and properties for each modal, instead of functions, would be best and I intend to improve this at some point.
 
 // Function for Beckley Law
 let slideIndex = 1; // first picture/div
@@ -35,7 +31,8 @@ function showDivs(n) {
   for (j = 0; j < x.length; j++) {
     x[j].style.display = "none";
     }
-    x[slideIndex-1].style.display = "block"; // on first run, displays first image because x is an array of mySlides, and we are getting the first one (index of 0) since 1 - 1 = 0.
+    x[slideIndex-1].style.display = "block";
+    // on first run, displays first image because x is an array of mySlides, and we are getting the first one (index of 0) since 1 - 1 = 0.
   }
 function plusDivs(n) {
   showDivs(slideIndex += n);
@@ -109,36 +106,54 @@ function plusDivs5(n) {
   showDivs5(slideIndex5 += n);
 }
 
+// FUNCTION TO OPEN AND CLOSE MODAL WINDOWS
+
+function openModal(num) {
+  modal[num].classList.add('show');
+}
+
+function closeModal(num) {
+  // change ONLY opacity first, that way this transitions
+  modal[num].style.opacity = 0;
+  setTimeout(function(){
+    modal[num].classList.remove('show');
+    // then remove the inline-opacity styles applied with JS so that next time we click "Learn More", applying show will transition properly
+    modal[num].style.removeProperty('opacity');
+  }, 1000);
+}
+
+// event listeners
+
 document.addEventListener('click', function (event) {
   if (event.target.matches('#beckley')) {
-    modal[0].style.display = "block";
+    openModal(0);
   }
   if (event.target.matches('#mills')) {
-    modal[1].style.display = "block";
+    openModal(1);
 	}
   if (event.target.matches('#swc')) {
-    modal[2].style.display = "block";
+    openModal(2);
 	}
   if (event.target.matches('#isba')) {
-    modal[3].style.display = "block";
+    openModal(3);
 	}
   if (event.target.matches('#ajax')) {
-    modal[4].style.display = "block";
+    openModal(4);
 	}
 	if (event.target.matches('#closeOne')) {
-		modal[0].style.display = "none";
+    closeModal(0);
 	}
   if (event.target.matches('#closeTwo')) {
-		modal[1].style.display = "none";
+		closeModal(1);
 	}
   if (event.target.matches('#closeThree')) {
-		modal[2].style.display = "none";
+		closeModal(2);
 	}
   if (event.target.matches('#closeFour')) {
-		modal[3].style.display = "none";
+		closeModal(3);
 	}
   if (event.target.matches('#closeFive')) {
-		modal[4].style.display = "none";
+		closeModal(4);
 	}
   if (event.target.matches('.forward')) {
     plusDivs(1);
@@ -173,77 +188,46 @@ document.addEventListener('click', function (event) {
 
 }, false);
 
-// animations for fading in and resizing:
+// animation for fading in major page sections:
 
-  var animateHTML = function() {
-    var elems;
-    var windowHeight;
-    function init() {
-      elems = document.querySelectorAll('.hidden');
-      windowHeight = window.innerHeight;
-      addEventHandlers();
-      checkPosition();
-    }
-    function addEventHandlers() {
-      window.addEventListener('scroll', checkPosition);
-      window.addEventListener('resize', init);
-    }
-    function checkPosition() {
-      for (var i = 0; i < elems.length; i++) {
-        var positionFromTop = elems[i].getBoundingClientRect().top;
-        if (positionFromTop - windowHeight <= 0) {
-          elems[i].className = elems[i].className.replace(
-            'hidden',
-            'fade-in-element'
-          );
-        }
+  const faded = document.querySelectorAll('.faded');
+  function scrollAppear() {
+    for (let i = 0; i < faded.length; i++) {
+      let introPos = faded[i].getBoundingClientRect().top;
+      let screenPos = window.innerHeight/1.2;
+      if (introPos < screenPos ) {
+        faded[i].classList.add('fade-in');
       }
     }
-    return {
-      init: init
-    };
-  };
-  animateHTML().init();
+  }
 
-// for animating sliding text
+  window.addEventListener('scroll', scrollAppear);
 
-  var slideHTML = function() {
-    var elems;
-    var windowHeight;
-    function init() {
-      elems = document.querySelectorAll('.moved');
-      windowHeight = window.innerHeight;
-      addEventHandlers();
-      checkPosition();
+// animation for animating sliding text from the left
+
+const movedLeft = document.querySelectorAll('.moved-left');
+function scrollAppearSlideLeft() {
+  for (let i = 0; i < movedLeft.length; i++) {
+    let introPos = movedLeft[i].getBoundingClientRect().top;
+    let screenPos = window.innerHeight/1.2;
+    if (introPos < screenPos ) {
+      movedLeft[i].classList.add('moved-center');
     }
-    function addEventHandlers() {
-      window.addEventListener('scroll', checkPosition);
-      window.addEventListener('resize', init);
+  }
+}
+
+// animation for animating sliding text from the right
+
+const movedRight = document.querySelectorAll('.moved-right');
+function scrollAppearSlideRight() {
+  for (let i = 0; i < movedRight.length; i++) {
+    let introPos = movedRight[i].getBoundingClientRect().top;
+    let screenPos = window.innerHeight/1.2;
+    if (introPos < screenPos ) {
+      setTimeout(function(){ movedRight[i].classList.add('moved-center');}, 1000);
     }
-    function checkPosition() {
+  }
+}
 
-      var moveSubText = () => {
-      var moveRight = document.querySelectorAll('.moved-right')[0];
-      moveRight.className = moveRight.className.replace(
-        'moved-right',
-        'move-in-element-right'
-      );
-      }
-
-      for (var i = 0; i < elems.length; i++) {
-        var positionFromTop = elems[i].getBoundingClientRect().top;
-        if (positionFromTop - windowHeight <= 0) {
-          elems[i].className = elems[i].className.replace(
-            'moved',
-            'move-in-element'
-          );
-          setTimeout(moveSubText(), 4000);
-        }
-      }
-    }
-    return {
-      init: init
-    };
-  };
-
-  slideHTML().init();
+window.addEventListener('scroll', scrollAppearSlideLeft);
+window.addEventListener('scroll', scrollAppearSlideRight);
