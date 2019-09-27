@@ -188,46 +188,21 @@ document.addEventListener('click', function (event) {
 
 }, false);
 
-// animation for fading in major page sections:
 
-  const faded = document.querySelectorAll('.faded');
-  function scrollAppear() {
-    for (let i = 0; i < faded.length; i++) {
-      let introPos = faded[i].getBoundingClientRect().top;
-      let screenPos = window.innerHeight/1.2;
-      if (introPos < screenPos ) {
-        faded[i].classList.add('fade-in');
-      }
-    }
-  }
-
-  window.addEventListener('scroll', scrollAppear);
-
-// animation for animating sliding text from the left
-
-const movedLeft = document.querySelectorAll('.moved-left');
-function scrollAppearSlideLeft() {
-  for (let i = 0; i < movedLeft.length; i++) {
-    let introPos = movedLeft[i].getBoundingClientRect().top;
+// basic function for showing hidden elements
+function showElement(currentClass, classToAdd) {
+  const currentElementClass = document.querySelectorAll(currentClass);
+  for (let i = 0; i < currentElementClass.length; i++) {
+    let introPos = currentElementClass[i].getBoundingClientRect().top;
     let screenPos = window.innerHeight/1.2;
     if (introPos < screenPos ) {
-      movedLeft[i].classList.add('moved-center');
+      currentElementClass[i].classList.add(classToAdd);
     }
   }
 }
 
-// animation for animating sliding text from the right
-
-const movedRight = document.querySelectorAll('.moved-right');
-function scrollAppearSlideRight() {
-  for (let i = 0; i < movedRight.length; i++) {
-    let introPos = movedRight[i].getBoundingClientRect().top;
-    let screenPos = window.innerHeight/1.2;
-    if (introPos < screenPos ) {
-      setTimeout(function(){ movedRight[i].classList.add('moved-center');}, 1000);
-    }
-  }
-}
-
-window.addEventListener('scroll', scrollAppearSlideLeft);
-window.addEventListener('scroll', scrollAppearSlideRight);
+window.addEventListener('scroll', () => {
+  showElement('.faded', 'fade-in');
+  showElement('.moved-left', 'moved-center');
+  showElement('.moved-right', 'moved-center');
+});
