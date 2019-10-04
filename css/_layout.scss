@@ -1,0 +1,542 @@
+/* =========================
+        NAVIGATION BAR
+===========================*/
+
+header {
+  background: black;
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-height: 80px;
+  @include desktop {
+    justify-content:center;
+  }
+}
+
+.menu-toggle {
+  color: $secondary-color;
+  cursor: pointer;
+  font-size: 2rem;
+  padding: 0 30px;
+  @include desktop {
+    display: none;
+  }
+}
+
+/* links */
+
+nav {
+  position: absolute; /* positioned absolutely to header element */
+  background-color: rgba(0, 135, 18, 0.55);
+  text-align: right;
+  top: 100%;
+  width: 100%;
+  display: none;
+  @include desktop {
+    all: unset;
+    display: block;
+  }
+}
+
+nav ul,
+nav ul li {
+  margin: 0;
+  padding: 0;
+  @include desktop {
+    all: unset;
+  }
+}
+
+nav ul li a {
+  color: #ffffff;
+  font-family: 'Special Elite', cursive;
+  font-size: 1.5rem;
+  display: block;
+  padding: 10px;
+  padding-right: 30px;
+  transition-property: color, background-color;
+  transition-duration: .5s;
+  &:hover {
+    color: $secondary-color;
+    background-color: rgba(34, 34, 34, 0.75);
+  }
+  @include desktop {
+    all: unset;
+    padding: 10px;
+    color: $primary-color;
+    font-size: 25px;
+    border: 2px solid black;
+    font-family: 'Special Elite', cursive;
+    transition-property: color, border, cursor, padding;
+    transition-duration: .5s;
+    &:hover {
+      color: $primary-color;
+      background-color: black;
+      border: 2px solid #FF0F83;
+      cursor: pointer;
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+  }
+}
+
+
+/* =========================
+      MAIN VIDEO/IMAGE
+===========================*/
+#main-image {
+  background-image: url("https://res.cloudinary.com/djad06sng/image/upload/v1548354309/sai-kiran-anagani-61187-unsplash.jpg"), linear-gradient(45deg, rgba(246, 96, 164, 0.59), rgba(202, 21, 232, 0.59),  rgba(18, 228, 0, 0.59));
+  background-blend-mode: overlay;
+  width: 100%;
+  height: Calc(100vh - 80px);
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+#trifecta-container {
+  position: absolute;
+  top: 80px;
+  @include flex-column;
+  justify-content: space-between;
+  width: 100%;
+  height: Calc(100vh - 80px);
+  overflow: hidden;
+  h1 {
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+    color: white;
+  }
+}
+
+.video-overlay1 {
+  background: rgba(0, 188, 18, 0.15);
+  @include video-image-overlay;
+}
+
+
+.video-overlay2 {
+  background: rgba(135, 15, 255, 0.15);
+  @include video-image-overlay;
+}
+
+.video-overlay3 {
+  background: rgba(246, 96, 164, 0.50);
+  @include video-image-overlay;
+}
+
+.video-overlay1:hover {
+  background: rgba(0, 188, 18, 0.40);
+}
+
+.video-overlay2:hover {
+  background: rgba(135, 15, 255, 0.40);
+}
+
+.video-overlay3:hover {
+  background-color: rgba(246, 96, 164, 0.70);
+}
+
+.video-overlay1 h1,
+.video-overlay2 h1,
+.video-overlay3 h1, {
+  transition-property: transform, -webkit-transform, -ms-transform;
+  transition-duration: .5s;
+}
+
+.video-overlay1:hover h1,
+.video-overlay2:hover h1,
+.ovideo-overlay3:hover h1 {
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+/* =========================
+          HOME
+===========================*/
+
+.header-space {
+  text-align: center;
+  padding: 80px 0 0 0;
+}
+
+#sub-container {
+  padding: 10vw;
+  background-image: linear-gradient(335deg, black 65%, #323232);
+  @include desktop {
+    padding: 2vw 15vw 5vw 15vw;
+  }
+  p {
+    color: $primary-color;
+    background-color: #ffffff;
+    display: inline-block;
+    padding: 10px;
+    margin: 5px;
+    font-weight: 700;
+  }
+}
+
+#greeting {
+  color: $secondary-color;
+  font-size: 1.75rem;
+  padding-bottom: 0;
+}
+
+
+
+/* =========================
+        PORTFOLIO
+===========================*/
+
+.portfolio-container,
+.contact-container {
+  color: $primary-color;
+  background-color: white;
+  padding: 10vw;
+  width: 100%;
+  text-align: center;
+  @include desktop {
+    padding: 2vw 10vw 5vw 10vw;
+  }
+}
+
+#gallery {
+  padding-top: 25px;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
+  grid-gap: 5vw;
+  @include desktop {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2vw;
+  }
+}
+
+.parent {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 10px 1px 40px rgba(51, 51, 51, 0.53);
+  @include desktop {
+    transition: transform, -webkit-transform, -ms-transform, box-shadow;
+    transition-duration: .5s;
+  }
+}
+
+.parent:hover {
+  @include desktop {
+    @include prefix(transform, translateY(-15px), webkit ms);
+    box-shadow: 25px 25px 55px rgba(51, 51, 51, 0.83);
+    }
+  }
+
+.darken {
+  @include desktop {
+    position: absolute;
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    height: 100%;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.0);
+    transition: background-color .5s ease;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+    &:hover .information-banner {
+      @include prefix(transform, translateY(0px), webkit ms);
+    }
+  }
+}
+
+
+.website {
+  width: 100%;
+  min-height: 300px;
+  height: 35vh;
+  background-color: pink;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: transform, -webkit-transform, -ms-transform, .5s;
+  &:hover {
+    @include prefix(transform, scale(1.1), webkit ms);
+  }
+}
+
+.information-banner {
+  position: absolute;
+  background-color: rgba(0,0,0,0.7);
+  padding: 20px;
+  width: 100%;
+  bottom: 0;
+  @include desktop {
+    background-color: transparent;
+    position: relative;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    @include prefix(transform, translateY(500px), webkit ms);
+    @include flex-column;
+    justify-content: center;
+    transition: transform, -webkit-transform, -ms-transform, .5s;
+  }
+}
+
+.one {
+  background-image: url("../images/portfolio-examples/index.jpg");
+}
+
+.two {
+  background-image: url("../images/portfolio-examples/millsFarmsHome.jpg");
+}
+
+.three {
+  background-image: url("../images/portfolio-examples/swchome.jpg");
+}
+
+.four {
+  background-image: url("../images/portfolio-examples/ISBA.jpg");
+}
+
+/* Modal Window */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+  background-color: rgb(255, 255, 255);
+  margin: 80px 0 0 0;
+  width: 100%;
+  box-shadow: 10px 1px 40px rgba(51, 51, 51, 0.53);
+  animation-name: modalopen;
+  animation-duration: 1s;
+}
+
+.modal-inner-content {
+  @include flex-column;
+  text-align: center;
+  color: black;
+  h2 {
+    font-size: 1.5rem;
+    padding-top: 40px;
+  }
+  img {
+    max-width: 100%;
+    @include desktop {
+      max-width: 85%;
+    }
+  }
+}
+
+.modal-layout {
+  @include flex-column;
+  @include desktop {
+    flex-direction: row;
+    padding: 2vw 5vw;
+  }
+  p {
+    padding: 2vw 5vw 2vw 5vw;
+    @include desktop {
+      padding: 2vw 10vw;
+    }
+  }
+  video {
+    width: 100%;
+  }
+}
+
+.closeBtn {
+  color: $primary-color;
+  position:absolute;
+  right: 0;
+  font-size: 45px;
+  padding: 0 10px;
+  cursor: pointer;
+  transtition-property: transform, -webkit-transform, -ms-transform, color;
+  transition-duration: .5s;
+}
+
+.closeBtn:hover,
+.closeBtn:focus, {
+  color: black;
+  @include prefix(transform, scale(1.3), webkit ms);
+}
+
+
+#flex {
+  display: flex;
+  flex-direction: column;
+  padding: 5vw 8vw;
+  @include desktop {
+    align-items: center;
+    padding: 2vw 0;
+  }
+  @include large-desktop {
+    flex-direction: row;
+  }
+}
+
+#flex img {
+  padding: 1vw 0 0 0;
+  @include desktop {
+    max-width: 70%;
+  }
+  @include desktop {
+    width: 50%;
+    height: 35%;
+    padding: 0 1vw;
+  }
+}
+
+/* =========================
+        ABOUT
+===========================*/
+
+.about-container {
+  text-align: center;
+  padding: 10vw;
+  background-image: linear-gradient(145deg, black 65%, #323232);
+  @include desktop {
+    padding: 2vw 15vw 5vw 15vw;
+  }
+}
+
+.alignment {
+  @include flex-column;
+  @include desktop {
+    flex-direction: row;
+  }
+  img {
+    width: 40vw;
+    margin-bottom: 5vw;
+    transition-property: border-radius;
+    transition-duration: .2s;
+    border-radius: 50%;
+    @include desktop {
+      width: 20vw;
+      min-width: 300px;
+      height: auto;
+      margin-right: 3vw;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+  }
+  p {
+    padding: 0;
+    color: #dddddd;
+  }
+}
+
+/* =========================
+        CONTACT
+===========================*/
+
+.contact-container h3 {
+  color: black;
+}
+
+.contact-links {
+  padding-bottom: 2vw;
+  color: black;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  a img {
+    display: inline-block;
+    padding: 1vw;
+    flex-grow: 1;
+    max-width: 15vw;
+    transition-property: transform, -webkit-transform, -ms-transform;
+    transition-duration: .5s;
+    &:hover {
+      @include prefix(transform, scale(1.1) translateY(-15px), webkit ms);
+    }
+    @include desktop {
+      max-width: 10vw;
+      &:hover {
+        @include prefix(transform, scale(1.1) translateY(-25px), webkit ms);
+      }
+    }
+  }
+}
+
+.last-words {
+  font-size: 1.5rem;
+  line-height: 1.3;
+  font-family: 'Lekton', sans-serif;
+}
+
+/* =========================
+        FOOTER
+===========================*/
+
+footer {
+  color: white;
+  background-image: url("../images/keyboard.jpg"), linear-gradient(45deg, rgba(246, 96, 164, 0.89), rgba(64, 64, 64, 1));
+  background-blend-mode: overlay;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  padding: 6vh 0;
+  position: relative;
+  p {
+    display: inline;
+    padding: 0;
+  }
+  a {
+    color: white;
+    cursor: pointer;
+  }
+}
+
+#second-line {
+  border-left: 2px solid white;
+  border-right: 2px solid white;
+  margin-left: 8vw;
+  margin-right: 8vw;
+}
+
+.footer-container {
+  @include flex-column;
+  justify-content: center;
+  height: 100%;
+  margin: 0 1vw;
+  border-left: 2px solid white;
+  border-right: 2px solid white;
+  transtion: color .5s;
+  div a:hover .fab {
+    @include prefix(transform, scale(1.2) rotateY(360deg), webkit ms);
+    color: rgba(7, 199, 51, 0.85);
+  }
+}
+
+/* fade effect  */
+
+@keyframes fade-in {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.fade-in-element {
+  animation: fade-in 2.5s;
+}
