@@ -303,8 +303,9 @@ nav ul li a {
     .parent {
       transition: transform, -webkit-transform, -ms-transform, box-shadow;
       transition-duration: .5s; }
-      .parent:last-of-type {
-        grid-column: 1/3; } }
+      /* .parent:last-of-type {
+        grid-column: 1/3; }  */
+      }
 
 @media screen and (min-width: 900px) {
   .parent:hover {
@@ -376,6 +377,9 @@ nav ul li a {
 
 .five {
   background-image: url("../images/portfolio-examples/ajax.PNG"); }
+
+.six {
+  background-image: url("../images/portfolio-examples/3bdhome.PNG"); }
 
 /* Modal Window */
 .modal {

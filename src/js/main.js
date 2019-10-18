@@ -1,5 +1,5 @@
-import "babel-polyfill";
-import 'core-js/stable';
+
+import 'core-js';
 import 'regenerator-runtime/runtime';
 
 (function() {
@@ -62,6 +62,9 @@ import 'regenerator-runtime/runtime';
   const AJAX = new Modal('mySlides5', 4);
   AJAX.showDivs(1);
 
+  const THREEBEERSDEEP = new Modal('mySlides6', 5);
+  THREEBEERSDEEP.showDivs(1);
+
   // event listeners on the document is more performant than having a bunch of event listerners on individual items: https://gomakethings.com/why-event-delegation-is-a-better-way-to-listen-for-events-in-vanilla-js/
 
   document.addEventListener('click', function (event) {
@@ -80,6 +83,9 @@ import 'regenerator-runtime/runtime';
     if (event.target.matches('#ajax')) {
       AJAX.openModal();
   	}
+    if (event.target.matches('#threeBD')) {
+      THREEBEERSDEEP.openModal();
+  	}
   	if (event.target.matches('#closeOne')) {
       Beckley.closeModal();
   	}
@@ -94,6 +100,9 @@ import 'regenerator-runtime/runtime';
   	}
     if (event.target.matches('#closeFive')) {
   		AJAX.closeModal();
+  	}
+    if (event.target.matches('#closeSix')) {
+  		THREEBEERSDEEP.closeModal();
   	}
     if (event.target.matches('#forward')) {
       Beckley.navigateDivs(1);
@@ -125,6 +134,12 @@ import 'regenerator-runtime/runtime';
     }
     if (event.target.matches('#backward5')) {
       AJAX.navigateDivs(-1);
+    }
+    if (event.target.matches('#forward6')) {
+      THREEBEERSDEEP.navigateDivs(1);
+    }
+    if (event.target.matches('#backward6')) {
+      THREEBEERSDEEP.navigateDivs(-1);
     }
 
   }, false);
