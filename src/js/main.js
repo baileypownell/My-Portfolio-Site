@@ -169,6 +169,13 @@ import '../css/portfolio.scss';
     header.style.backgroundColor = 'rgba(255, 255, 255, ' + (scrolled/400)+')';
   }
 
+  // function for darkening footer on scroll up
+  const fadeFooter = () => {
+    const footer = document.querySelector('footer>div');
+    let scrolled = window.pageYOffset;
+    footer.style.backgroundColor = 'rgba(0, 0, 0, ' + (document.body.offsetHeight-(window.innerHeight+window.pageYOffset))/500 + ')';
+  }
+
 
   // basic function for showing hidden elements
   function showElement(currentClass, classToAdd) {
@@ -187,5 +194,6 @@ import '../css/portfolio.scss';
     showElement('.moved-left', 'moved-center');
     showElement('.moved-right', 'moved-center');
     whitenNav();
+    fadeFooter();
   });
 }());

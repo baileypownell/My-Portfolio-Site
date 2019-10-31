@@ -4,7 +4,10 @@ $primary-color: rgba(247, 59, 0, 0.7);
 $secondary-color: rgba(247, 59, 0, 0.7);
 $tertiary-color: pink;
 
-
+input:focus, textarea:focus, select:focus{
+        outline: none;
+    }
+    
 /* Mixins */
 
 @mixin prefix($property, $value, $prefixes: ()) {

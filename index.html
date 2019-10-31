@@ -316,8 +316,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
     <div class="contact-container">
-      <h2>Contact</h2>
+
       <div class="contact-links">
+        <h2>Contact</h2>
         <a href="https://github.com/baileypownell" target="_blank"><img class="logo" src="src/images/githublogo.png" alt="Github logo"></a>
         <a href="https://teamtreehouse.com/baileypownell" target="_blank"><img class="logo" src="src/images/Treehouse-Logo.png" alt="Treehouse logo"</a>
         <a href="https://www.linkedin.com/in/bailey-pownell-224606167/" target="_blank"><img class="logo" src="src/images/linkedin.png" alt="LinkedIn logo"</a>
@@ -326,33 +327,49 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <a href="resume.pdf" target="_blank"><img class="logo" src="src/images/grid.png" alt="resume drawing"></a>
         </div>
       </div>
-      <h2 class="last-words moved-left">Like what you see? Looking to hire a junior front-end web dev?</h2>
-      <h2 class="last-words moved-right">Let's get in touch.</h2>
-      <h3>Phone: (574) 727-5898</h3>
-      <h3>Email: bailey.pownell@gmail.com</h3>
+      <div id="information">
+        <h2 class="moved-left">Hiring a junior web dev?</h2>
+        <h2>Let's get in touch.</h2>
+        <form>
+          <div>
+            <label>NAME</label>
+            <input type="text" id="name" required></input>
+          </div>
+          <div>
+            <label>EMAIL</label>
+            <input type="email" name="email" required></input>
+          </div>
+          <div>
+            <label>MESSAGE</label>
+            <textarea id="message" name="message" required maxlength="500"></textarea>
+          </div>
+        </form>
+      </div>
     </div>
   </main>
   <footer id="footer">
-    <div id="second-line">
-      <div class="footer-container">
-        <i class="fas fa-desktop"  id="computer"></i>
-        <div>
-          <i class="fas fa-phone"></i>
-          <p>(574) 727-5898</p>
+    <div>
+      <div id="second-line">
+        <div class="footer-container">
+          <i class="fas fa-desktop"  id="computer"></i>
+          <div>
+            <i class="fas fa-phone"></i>
+            <p>(574) 727-5898</p>
+          </div>
+          <div>
+            <i class="fas fa-envelope"></i>
+            <p>bailey.pownell@gmail.com</p>
+          </div>
+          <div>
+            <a href="https://www.linkedin.com/in/bailey-pownell-224606167/" target="_blank"><i class="fab fa-linkedin"></i>
+            <p>LinkedIn</p></a>
+          </div>
+          <div>
+            <a href="https://github.com/baileypownell" target="_blank"><i class="fab fa-github"></i>
+            <p>Github</p></a>
+          </div>
+        <p>&copy; 2019 Bailey Pownell</p>
         </div>
-        <div>
-          <i class="fas fa-envelope"></i>
-          <p>bailey.pownell@gmail.com</p>
-        </div>
-        <div>
-          <a href="https://www.linkedin.com/in/bailey-pownell-224606167/" target="_blank"><i class="fab fa-linkedin"></i>
-          <p>LinkedIn</p></a>
-        </div>
-        <div>
-          <a href="https://github.com/baileypownell" target="_blank"><i class="fab fa-github"></i>
-          <p>Github</p></a>
-        </div>
-      <p>&copy; 2019 Bailey Pownell</p>
       </div>
     </div>
   </footer>

@@ -205,6 +205,28 @@ nav ul li a {
   }
 }
 
+.contact-container {
+  @include desktop {
+    display: flex;
+    flex-wrap: nowrap;
+    .contact-links {
+      width: 50%;
+      h2 {
+        width: 100%;
+      }
+    }
+    #information {
+      width: 50%;
+      h2 {
+        font-size: 1.5rem;
+        line-height: 1.3;
+        font-family: 'Lekton', sans-serif;
+      }
+    }
+  }
+}
+
+
 #gallery {
   padding-top: 25px;
   display: grid;
@@ -303,6 +325,10 @@ nav ul li a {
 
 .four {
   background-image: url("../images/portfolio-examples/ISBA.jpg");
+}
+
+.six {
+  background-image: url("../images/portfolio-examples/3bdhome.jpg");
 }
 
 /* Modal Window */
@@ -468,7 +494,7 @@ nav ul li a {
       @include prefix(transform, scale(1.1) translateY(-15px), webkit ms);
     }
     @include desktop {
-      max-width: 10vw;
+      max-width: 7vw;
       &:hover {
         @include prefix(transform, scale(1.1) translateY(-25px), webkit ms);
       }
@@ -476,10 +502,29 @@ nav ul li a {
   }
 }
 
-.last-words {
-  font-size: 1.5rem;
-  line-height: 1.3;
-  font-family: 'Lekton', sans-serif;
+form {
+  display: flex;
+  flex-direction: column;
+  > div {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    margin: 0 auto;
+    padding: 10px 0;
+    label {
+      color: #1c1a1b;
+      font-family: "Special Elite", cursive;
+      letter-spacing: 7px;
+      padding: 5px;
+    }
+    input, textarea {
+      border: 2px solid #1c1a1b;
+      padding: 5px;
+      &:hover, select {
+        border-color: $primary-color;
+      }
+    }
+  }
 }
 
 /* =========================
@@ -493,7 +538,6 @@ footer {
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
-  padding: 6vh 0;
   position: relative;
   p {
     display: inline;
@@ -502,6 +546,12 @@ footer {
   a {
     color: white;
     cursor: pointer;
+  }
+  > div {
+    width: 100%;
+    height: 100%;
+    padding: 6vh 0;
+    background-color: rgba(0, 0, 0, 0);
   }
 }
 
