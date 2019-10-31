@@ -1,14 +1,32 @@
 
 import 'core-js';
 import 'regenerator-runtime/runtime';
+import '../css/portfolio.scss';
 
 (function() {
   let hamburger = document.querySelector('.menu-toggle');
   let nav = document.querySelector('nav');
+  let header = document.getElementById('header');
+  let x = document.getElementById('x');
 
   hamburger.addEventListener('click', () => {
+    header.classList.toggle('noHeader');
     nav.classList.toggle('is-visible');
   });
+
+  x.addEventListener('click', () => {
+    header.classList.toggle('noHeader');
+    nav.classList.toggle('is-visible');
+  });
+
+  let navOptions = document.querySelectorAll('li');
+  for (let i = 0; i < navOptions.length; i++) {
+    navOptions[i].addEventListener('click', () => {
+      nav.classList.toggle('is-visible');
+      header.classList.toggle('noHeader');
+    });
+  }
+
 
   const modal = Array.from(document.getElementsByClassName('modal'));
 
@@ -53,14 +71,14 @@ import 'regenerator-runtime/runtime';
   const Mills = new Modal('mySlides2', 1);
   Mills.showDivs(1);
 
-  const SweetwaterCakes = new Modal('mySlides3', 2);
-  SweetwaterCakes.showDivs(1);
+  const WeatherApp = new Modal('mySlides3', 2);
+  WeatherApp.showDivs(1);
 
   const ISBA = new Modal('mySlides4', 3);
   ISBA.showDivs(1);
 
-  const AJAX = new Modal('mySlides5', 4);
-  AJAX.showDivs(1);
+  const MealPickerApp = new Modal('mySlides5', 4);
+  MealPickerApp.showDivs(1);
 
   const THREEBEERSDEEP = new Modal('mySlides6', 5);
   THREEBEERSDEEP.showDivs(1);
@@ -144,6 +162,14 @@ import 'regenerator-runtime/runtime';
 
   }, false);
 
+  // function for whitening navbar on scrolling
+  const whitenNav = () => {
+    const nav = document.getElementById("header");
+    let scrolled = window.pageYOffset;
+    header.style.backgroundColor = 'rgba(255, 255, 255, ' + (scrolled/400)+')';
+  }
+
+
   // basic function for showing hidden elements
   function showElement(currentClass, classToAdd) {
     const currentElementClass = document.querySelectorAll(currentClass);
@@ -160,5 +186,6 @@ import 'regenerator-runtime/runtime';
     showElement('.faded', 'fade-in');
     showElement('.moved-left', 'moved-center');
     showElement('.moved-right', 'moved-center');
+    whitenNav();
   });
 }());
