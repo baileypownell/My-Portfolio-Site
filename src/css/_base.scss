@@ -1,7 +1,7 @@
 /* Variables */
 
 $primary-color: #f966b0;
-$secondary-color: #ebce47;
+$secondary-color: #fcab3a;
 $tertiary-color: pink;
 
 input:focus, textarea:focus, select:focus{
@@ -104,7 +104,7 @@ html, body {
 
 h2 {
   color: $primary-color;
-  font-size: 30px;
+  font-size: 20px;
   font-family: 'Special Elite', cursive;
   padding: 0;
   @include desktop {
@@ -118,7 +118,7 @@ h3,
 h4,
 h5,
 h6 {
-  line-height: 1.75;
+  line-height: 1.5;
   margin: 0;
   padding: 1vw 0;
 }

@@ -20,14 +20,16 @@ import '../css/portfolio.scss';
   });
 
   let navOptions = document.querySelectorAll('li');
-  for (let i = 0; i < navOptions.length; i++) {
-    if (window.innerWidth < 900) {
+
+  if (window.innerWidth < 900) {
+    for (let i = 0; i < navOptions.length; i++) {
       navOptions[i].addEventListener('click', () => {
         nav.classList.toggle('is-visible');
         header.classList.toggle('noHeader');
       });
     }
   }
+
 
 
   const modal = Array.from(document.getElementsByClassName('modal'));
@@ -89,6 +91,7 @@ import '../css/portfolio.scss';
 
   document.addEventListener('click', function (event) {
     if (event.target.matches('#beckley')) {
+      console.log('here');
       Beckley.openModal();
     }
     if (event.target.matches('#mills')) {
