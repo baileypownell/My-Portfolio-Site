@@ -66,7 +66,7 @@ nav ul li a {
   &:hover {
     color: $primary-color;
     letter-spacing: 15px;
-    text-shadow: 5px 5px 20px white;
+    text-shadow: 5px 5px 20px $primary-color;
   }
   @include desktop {
     all: unset;
@@ -81,7 +81,7 @@ nav ul li a {
     transition-duration: .5s;
     &:hover {
       letter-spacing: 15px;
-      text-shadow: 5px 5px 20px white;
+      text-shadow: 5px 5px 20px $primary-color;
     }
   }
 }
@@ -118,7 +118,6 @@ nav ul li a {
     background-color: rgba(0, 0, 0, 0.0);
     > div {
       backdrop-filter: blur(2px) brightness(120%);
-      border-radius: 60px;
       padding: 20px;
       margin: 15px 0;
     }
@@ -197,7 +196,7 @@ nav ul li a {
 .contact-container {
   color: $primary-color;
   background-color: white;
-  padding: 10vw;
+  padding: 5vw;
   width: 100%;
   text-align: center;
   @include desktop {
@@ -211,9 +210,6 @@ nav ul li a {
     flex-wrap: nowrap;
     .contact-links {
       width: 50%;
-      h2 {
-        width: 100%;
-      }
     }
     #information {
       width: 50%;
@@ -320,11 +316,15 @@ nav ul li a {
 }
 
 .three {
-  // background-image: url("../images/portfolio-examples/swchome.jpg");
+  background-image: url("../images/portfolio-examples/weatherApp.jpg");
 }
 
 .four {
   background-image: url("../images/portfolio-examples/ISBA.jpg");
+}
+
+.five {
+  background-image: url("../images/portfolio-examples/mealPicker.jpg");
 }
 
 .six {
@@ -478,6 +478,9 @@ nav ul li a {
 }
 
 .contact-links {
+  h2 {
+    width: 100%;
+  }
   padding-bottom: 2vw;
   color: black;
   display: flex;
@@ -520,8 +523,14 @@ form {
     input, textarea {
       border: 2px solid #1c1a1b;
       padding: 5px;
+      transition: border-color .3s;
       &:hover, select {
-        border-color: $primary-color;
+        border-color: $secondary-color;
+      }
+    }
+    @include desktop {
+      textarea {
+        height: 200px;
       }
     }
   }
@@ -533,7 +542,7 @@ form {
 
 footer {
   color: white;
-  background-image: url("../images/keyboard.jpg"), linear-gradient(45deg, rgba(246, 96, 164, 0.89), rgba(64, 64, 64, 1));
+  background-image: url("../images/keyboard.jpg"), linear-gradient(45deg, rgba(246, 96, 164, 0.89), $secondary-color);
   background-blend-mode: overlay;
   background-position: center;
   background-size: cover;
@@ -572,7 +581,7 @@ footer {
   transtion: color .5s;
   div a:hover .fab {
     @include prefix(transform, scale(1.2) rotateY(360deg), webkit ms);
-    color: rgba(7, 199, 51, 0.85);
+    color: $secondary-color;
   }
 }
 

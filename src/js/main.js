@@ -3,7 +3,7 @@ import 'core-js';
 import 'regenerator-runtime/runtime';
 import '../css/portfolio.scss';
 
-(function() {
+// (function() {
   let hamburger = document.querySelector('.menu-toggle');
   let nav = document.querySelector('nav');
   let header = document.getElementById('header');
@@ -21,10 +21,12 @@ import '../css/portfolio.scss';
 
   let navOptions = document.querySelectorAll('li');
   for (let i = 0; i < navOptions.length; i++) {
-    navOptions[i].addEventListener('click', () => {
-      nav.classList.toggle('is-visible');
-      header.classList.toggle('noHeader');
-    });
+    if (window.innerWidth < 900) {
+      navOptions[i].addEventListener('click', () => {
+        nav.classList.toggle('is-visible');
+        header.classList.toggle('noHeader');
+      });
+    }
   }
 
 
@@ -92,14 +94,14 @@ import '../css/portfolio.scss';
     if (event.target.matches('#mills')) {
       Mills.openModal();
   	}
-    if (event.target.matches('#swc')) {
-      SweetwaterCakes.openModal();
+    if (event.target.matches('#weatherApp')) {
+      WeatherApp.openModal();
   	}
     if (event.target.matches('#isba')) {
       ISBA.openModal();
   	}
-    if (event.target.matches('#ajax')) {
-      AJAX.openModal();
+    if (event.target.matches('#mealPicker')) {
+      MealPickerApp.openModal();
   	}
     if (event.target.matches('#threeBD')) {
       THREEBEERSDEEP.openModal();
@@ -111,13 +113,13 @@ import '../css/portfolio.scss';
   		Mills.closeModal();
   	}
     if (event.target.matches('#closeThree')) {
-  		SweetwaterCakes.closeModal();
+  		WeatherApp.closeModal();
   	}
     if (event.target.matches('#closeFour')) {
   		ISBA.closeModal();
   	}
     if (event.target.matches('#closeFive')) {
-  		AJAX.closeModal();
+  		MealPickerApp.closeModal();
   	}
     if (event.target.matches('#closeSix')) {
   		THREEBEERSDEEP.closeModal();
@@ -136,10 +138,10 @@ import '../css/portfolio.scss';
       Mills.navigateDivs(-1);
     }
     if (event.target.matches('#forward3')) {
-      SweetwaterCakes.navigateDivs(1);
+      WeatherApp.navigateDivs(1);
     }
     if (event.target.matches('#backward3')) {
-      SweetwaterCakes.navigateDivs(-1);
+      WeatherApp.navigateDivs(-1);
     }
     if (event.target.matches('#forward4')) {
       ISBA.navigateDivs(1);
@@ -148,10 +150,10 @@ import '../css/portfolio.scss';
       ISBA.navigateDivs(-1);
     }
     if (event.target.matches('#forward5')) {
-      AJAX.navigateDivs(1);
+      MealPickerApp.navigateDivs(1);
     }
     if (event.target.matches('#backward5')) {
-      AJAX.navigateDivs(-1);
+      MealPickerApp.navigateDivs(-1);
     }
     if (event.target.matches('#forward6')) {
       THREEBEERSDEEP.navigateDivs(1);
@@ -196,4 +198,4 @@ import '../css/portfolio.scss';
     whitenNav();
     fadeFooter();
   });
-}());
+// }());

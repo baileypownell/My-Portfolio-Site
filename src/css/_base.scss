@@ -1,13 +1,13 @@
 /* Variables */
 
-$primary-color: rgba(247, 59, 0, 0.7);
-$secondary-color: rgba(247, 59, 0, 0.7);
+$primary-color: #f966b0;
+$secondary-color: #ebce47;
 $tertiary-color: pink;
 
 input:focus, textarea:focus, select:focus{
         outline: none;
     }
-    
+
 /* Mixins */
 
 @mixin prefix($property, $value, $prefixes: ()) {
@@ -26,13 +26,17 @@ input:focus, textarea:focus, select:focus{
   background-color: white;
   border: 3px solid $tertiary-color;
   outline: none;
-  transition: background-color, transform, -webkit-transform, -ms-transform, border, .3s;
+  transition: color, background-color, transform, -webkit-transform, -ms-transform, border, .3s;
   &:hover {
     @include prefix(transform, scale(1.1), webkit ms);
-    border: 3px solid $primary-color;
-    background-color: $tertiary-color;
+    border: 3px solid $secondary-color;
+    color: $secondary-color;
+  }
+  &:hover a {
+    color: $secondary-color;
   }
   a {
+    transition: color .3s;
     color: $primary-color;
   }
 }
@@ -99,10 +103,13 @@ html, body {
 
 
 h2 {
-  color: #FF0F83;
-  font-size: 2.5rem;
+  color: $primary-color;
+  font-size: 30px;
   font-family: 'Special Elite', cursive;
   padding: 0;
+  @include desktop {
+    font-size: 2.5rem;
+  }
 }
 
 p,
