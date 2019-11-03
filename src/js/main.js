@@ -238,7 +238,10 @@ import '../css/portfolio.scss';
       data: $('form').serialize(),
       success: function () {
         console.log('email sent');
-        // document.querySelector('.confirmation').setAttribute("id", "showConfirmation");
+         document.querySelector('.confirmation').setAttribute("id", "showSubmitResult");
+      },
+      error: function() {
+        document.querySelector('.error').setAttribute("id", "showSubmitResult");
       }
     });
 

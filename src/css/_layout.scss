@@ -565,6 +565,10 @@ form {
       border: 2px solid #1c1a1b;
       padding: 5px;
       transition: border-color .3s;
+      font-size: 1rem;
+      @include desktop {
+        font-size: 1.25rem;
+      }
       &:hover, select {
         border-color: $secondary-color;
       }
@@ -579,6 +583,31 @@ form {
   }
 }
 
+.confirmation,
+.error {
+  padding: 15px;
+  width: 50%;
+  border-radius: 30px;
+  background-color: $tertiary-color;
+  display: none;
+  color: white;
+  margin: 25px auto 0 auto;
+  transition:transform .4s;
+  transform:scale(0);
+  -webkit-transform:scale(0);
+  -ms-transform:scale(0);
+  h3 {
+    color: white;
+  }
+}
+
+#showSubmitResult {
+  display: block;
+  -webkit-transform:scale(1);
+  -ms-transform:scale(1);
+  transform:scale(1)
+}
+
 /* =========================
         FOOTER
 ===========================*/
@@ -588,10 +617,13 @@ footer {
   background-image: url("../../images/keyboard.jpg"), linear-gradient(45deg, rgba(246, 96, 164, 0.89), $secondary-color);
   background-blend-mode: soft-light;
   background-position: bottom;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   position: relative;
+  @include desktop {
+    background-size: contain;
+  }
   p {
     display: inline;
     padding: 0;
