@@ -1,0 +1,133 @@
+/* Variables */
+
+$primary-color: rgba(246,96,164,1);
+$secondary-color: #fcab3a;
+$tertiary-color: pink;
+
+input:focus, textarea:focus, select:focus{
+        outline: none;
+    }
+
+/* Mixins */
+
+@mixin prefix($property, $value, $prefixes: ()) {
+  @each $prefix in $prefixes {
+    #{'-' + $prefix + '-' + $property}: $value;
+  }
+}
+
+@mixin button {
+  cursor: pointer;
+  border-radius: 40px;
+  font-family: 'Lekton', serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: $primary-color;
+  background-color: white;
+  border: 3px solid $tertiary-color;
+  outline: none;
+  transition: color, background-color, transform, -webkit-transform, -ms-transform, border, .3s;
+  &:hover {
+    @include prefix(transform, scale(1.1), webkit ms);
+    border: 3px solid $secondary-color;
+    color: $secondary-color;
+  }
+  &:hover a {
+    color: $secondary-color;
+  }
+  a {
+    transition: color .3s;
+    color: $primary-color;
+  }
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Media query mixins */
+
+@mixin small-screen {
+  @media screen and (min-width: 500px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: 900px) {
+    @content;
+  }
+}
+
+@mixin large-desktop {
+  @media screen and (min-width: 1300px) {
+    @content;
+  }
+}
+
+/* Media query to ensure that the inline Javascript display property (none) from slideToggle that was applied on mobile view is removed when the browser is resized to a larger screen */
+
+@media screen and (min-width: 900px) {
+  nav {
+    display: block !important;
+  }
+
+}
+
+
+
+/* =========================
+        GENERAL
+===========================*/
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+:root {
+  font-size: 16px;
+  @include desktop {
+    font-size: 18px;
+  }
+}
+
+html, body {
+  margin: 0px;
+  font-family: 'Lekton', sans-serif;
+  color: white;
+  background-color: #191919;
+  scroll-behavior: smooth;
+}
+
+h2 {
+  color: $primary-color;
+  font-size: 2rem;
+  font-family: 'Special Elite', cursive;
+  padding: 0;
+  @include desktop {
+    font-size: 2.5rem;
+  }
+}
+
+p,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.5;
+  margin: 0;
+  padding: 5vw 0;
+  @include small-screen {
+    padding: 2vw 0;
+  }
+  @include desktop {
+    padding: 1vw 0;
+  }
+}

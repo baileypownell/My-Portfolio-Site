@@ -1,0 +1,68 @@
+
+/* portfolio button styling */
+
+button {
+  padding: 10px 15px;
+  margin: 5px;
+  @include button;
+}
+
+
+
+/* modal button back and forth buttons */
+
+.slide-button {
+  background-color: rgba(0, 0, 0, 0.42);
+  width: 50%;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.65);
+  }
+  @include desktop {
+    height: 15vh;
+    background-color: rgba(0, 0, 0, 0.42);
+    width: auto;
+  }
+}
+
+/* Footer icons */
+
+#computer {
+  font-size: 50px;
+  padding: 2vw;
+}
+
+.fab,
+#computer,
+.fas {
+  transition-property: all;
+  transition-duration: .5s;
+}
+
+.fab,
+.fas {
+  font-size: 1.25rem;
+}
+
+/* JS effects */
+.noHeader {
+  height: 0px;
+}
+
+.is-visible {
+  transform: scale(1);
+}
+
+.moved,
+.moved-right {
+  opacity: 0;
+}
+
+/* modal open effect */
+@keyframes modalopen {
+  from {opacity: 0}
+  to {opacity: 1}
+}
+
+.show {
+  display: block;
+}
