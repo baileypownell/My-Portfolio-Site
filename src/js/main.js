@@ -1,37 +1,9 @@
-require('../../images/linkedin.png');
-require('../../images/areas.jpg');
-require('../../images/about.jpg');
-require('../../images/contact1.jpg');
-require('../../images/contact2.jpg');
-require('../../images/contact3.jpg');
-require('../../images/faq.jpg');
-// require('../../images/beckleylawdemo.mp4');
-require('../../images/millsFarmsHome.jpg');
-require('../../images/millsFarmsContact.jpg');
-require('../../images/millsFarmsAbout.jpg');
-// require('../../images/millsFarms.mp4');
-require('../../images/grid.png');
-require('../../images/weatherApp.jpg');
-require('../../images/isba_real.jpg');
-require('../../images/isba_bottom.jpg');
-require('../../images/isba_home.jpg');
-require('../../images/isba_links.jpg');
-require('../../images/isba_menu.jpg');
-// require('../../images/isba.mp4');
-require('../../images/mealPicker.jpg');
-// require('../../images/mealPicker.mp4');
-require('../../images/3bdhome.png');
-// require('../../images/3bddemo.mp4');
-require('../../images/headshot1.jpeg');
-require('../../images/githublogo.png');
-require('../../images/Treehouse-Logo.png');
-require('../../images/codepen.png');
-
 import 'core-js';
 import 'regenerator-runtime/runtime';
 import '../css/portfolio.scss';
 
-// (function() {
+(function() {
+
   let hamburger = document.querySelector('.menu-toggle');
   let nav = document.querySelector('nav');
   let header = document.getElementById('header');
@@ -47,19 +19,20 @@ import '../css/portfolio.scss';
     nav.classList.toggle('is-visible');
   });
 
+
   let navOptions = document.querySelectorAll('li');
 
   function closeNavOnMobileClick() {
-    nav.classList.toggle('is-visible');
-    header.classList.toggle('noHeader');
+    if (window.innerWidth < 900) {
+      nav.classList.toggle('is-visible');
+      header.classList.toggle('noHeader');
+    }
   }
 
-  if (window.innerWidth < 900) {
-    for (let i = 0; i < navOptions.length; i++) {
-      navOptions[i].addEventListener('click', () => {
-        closeNavOnMobileClick();
-      });
-    }
+  for (let i = 0; i < navOptions.length; i++) {
+    navOptions[i].addEventListener('click', () => {
+      closeNavOnMobileClick();
+    });
   }
 
   const ua = window.navigator.userAgent;
@@ -254,4 +227,4 @@ import '../css/portfolio.scss';
     });
 
   });
-// }());
+}());
