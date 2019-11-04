@@ -49,16 +49,24 @@ import '../css/portfolio.scss';
 
   let navOptions = document.querySelectorAll('li');
 
+  function closeNavOnMobileClick() {
+    nav.classList.toggle('is-visible');
+    header.classList.toggle('noHeader');
+  }
+
   if (window.innerWidth < 900) {
     for (let i = 0; i < navOptions.length; i++) {
       navOptions[i].addEventListener('click', () => {
-        nav.classList.toggle('is-visible');
-        header.classList.toggle('noHeader');
+        closeNavOnMobileClick();
       });
     }
   }
 
-
+  const ua = window.navigator.userAgent;
+  const msie = ua.indexOf("MSIE ");
+  if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+    header.style.display = 'none';
+  }
 
   const modal = Array.from(document.getElementsByClassName('modal'));
 

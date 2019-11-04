@@ -67,6 +67,18 @@ input:focus, textarea:focus, select:focus{
   }
 }
 
+@mixin IE10up {
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    @content;
+  }
+}
+
+@mixin desktopIE10up {
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) and (min-width: 900px) {
+    @content;
+  }
+}
+
 /* Media query to ensure that the inline Javascript display property (none) from slideToggle that was applied on mobile view is removed when the browser is resized to a larger screen */
 
 @media screen and (min-width: 900px) {
