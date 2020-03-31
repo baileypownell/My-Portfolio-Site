@@ -68,6 +68,7 @@ import '../css/portfolio.scss';
       modal[this.num].classList.add('show');
     }
     closeModal() {
+      console.log('closing')
       // change ONLY opacity first, that way this transitions
       modal[this.num].style.opacity = 0;
       setTimeout(() => {
@@ -96,6 +97,9 @@ import '../css/portfolio.scss';
   const THREEBEERSDEEP = new Modal('mySlides6', 5);
   THREEBEERSDEEP.showDivs(1);
 
+  const REACT_WEIGHT_TRACKER = new Modal('mySlides7', 6);
+  REACT_WEIGHT_TRACKER.showDivs(1);
+
   // event listeners on the document is more performant than having a bunch of event listerners on individual items: https://gomakethings.com/why-event-delegation-is-a-better-way-to-listen-for-events-in-vanilla-js/
 
   document.addEventListener('click', function (event) {
@@ -117,6 +121,9 @@ import '../css/portfolio.scss';
     if (event.target.matches('#threeBD')) {
       THREEBEERSDEEP.openModal();
   	}
+    if (event.target.matches('#react_weight_tracker')) {
+      REACT_WEIGHT_TRACKER.openModal();
+  	}
   	if (event.target.matches('#closeOne')) {
       Beckley.closeModal();
   	}
@@ -134,6 +141,9 @@ import '../css/portfolio.scss';
   	}
     if (event.target.matches('#closeSix')) {
   		THREEBEERSDEEP.closeModal();
+  	}
+    if (event.target.matches('#closeSeven')) {
+  		REACT_WEIGHT_TRACKER.closeModal();
   	}
     if (event.target.matches('#forward')) {
       Beckley.navigateDivs(1);
@@ -171,6 +181,12 @@ import '../css/portfolio.scss';
     }
     if (event.target.matches('#backward6')) {
       THREEBEERSDEEP.navigateDivs(-1);
+    }
+    if (event.target.matches('#forward7')) {
+      REACT_WEIGHT_TRACKER.navigateDivs(1);
+    }
+    if (event.target.matches('#backward7')) {
+      REACT_WEIGHT_TRACKER.navigateDivs(-1);
     }
 
   }, false);
