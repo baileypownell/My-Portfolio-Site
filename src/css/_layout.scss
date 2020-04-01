@@ -261,13 +261,16 @@ nav ul li a {
 #gallery {
   padding-top: 25px;
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
   grid-template-columns: 1fr;
   grid-gap: 5vw;
-  @include desktop {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
+  @include tablet {
+    grid-template-rows: auto;
     grid-template-columns: 1fr 1fr;
+  }
+  @include desktop {
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: auto;
     grid-gap: 2vw;
   }
   @include IE10up {
@@ -284,9 +287,17 @@ nav ul li a {
   position: relative;
   overflow: hidden;
   box-shadow: 10px 1px 40px rgba(51, 51, 51, 0.53);
+  @include tablet {
+    &:nth-child(1) {
+      grid-column: 1/3;
+    }
+  }
   @include desktop {
     transition: transform, -webkit-transform, -ms-transform, box-shadow;
     transition-duration: .5s;
+    &:nth-child(1) {
+       grid-column: 1/4;
+    }
   }
   @include IE10up {
     margin: 20px 0;
@@ -373,7 +384,7 @@ nav ul li a {
 }
 
 .three {
-  background-image: url("../../images/weatherApp.jpg");
+  background-image: url("../../images/weather.png");
 }
 
 .four {
@@ -388,7 +399,7 @@ nav ul li a {
   background-image: url("../../images/3bdhome.jpg");
 }
 .seven {
-  background-image: url("https://res.cloudinary.com/djad06sng/image/upload/v1585684778/userinterface.jpg");
+  background-image: url("../../images/userinterface.jpg");
 }
 
 /* Modal Window */
@@ -431,6 +442,14 @@ nav ul li a {
     @include desktop {
       max-width: 85%;
     }
+    @include large-desktop {
+      max-width: 70%;
+    }
+  }
+  @include tablet {
+    img#mobile {
+      max-width: 20%!important;
+    }
   }
 }
 
@@ -454,7 +473,12 @@ nav ul li a {
   p {
     padding: 2vw 5vw 2vw 5vw;
     @include desktop {
-      padding: 2vw 10vw;
+      padding: 1vw 0;
+      width: 75%;
+      margin: 0 auto;
+    }
+    @include large-desktop {
+      width: 50%;
     }
   }
   video {
@@ -476,7 +500,7 @@ nav ul li a {
 .closeBtn:hover,
 .closeBtn:focus, {
   color: black;
-  @include prefix(transform, scale(1.3), webkit ms);
+  // @include prefix(transform, scale(1.3), webkit ms);
 }
 
 
@@ -517,10 +541,13 @@ nav ul li a {
 
 .about-container {
   text-align: center;
-  padding: 5vw;
+  padding: 20vw 5vw;
   background-image: linear-gradient(145deg, black 65%, #323232);
+  @include tablet {
+    padding: 10vw 15vw;
+  }
   @include desktop {
-    padding: 4vw 15vw 4vw 15vw;
+    padding: 5vw 15vw
   }
 }
 
@@ -531,7 +558,7 @@ nav ul li a {
     justify-content: center;
   }
   img {
-    width: 30vw;
+    width: 35vw;
     margin-bottom: 5vw;
     border-radius: 50%;
     @include desktop {
@@ -545,6 +572,8 @@ nav ul li a {
   p {
     padding: 0;
     color: #dddddd;
+    width: 90%;
+    margin: 0 auto;
   }
   > div {
     max-width: 600px;
@@ -573,11 +602,14 @@ nav ul li a {
     display: inline-block;
     padding: 1vw;
     flex-grow: 1;
-    max-width: 11vw;
+    max-width: 17vw;
     transition-property: transform, -webkit-transform, -ms-transform;
     transition-duration: .5s;
     &:hover {
       @include prefix(transform, scale(1.1) translateY(-15px), webkit ms);
+    }
+    @include tablet {
+      max-width: 14vw;
     }
     @include desktop {
       max-width: 7vw;
