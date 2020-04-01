@@ -55,6 +55,12 @@ input:focus, textarea:focus, select:focus{
   }
 }
 
+@mixin tablet {
+  @media screen and (min-width: 650px) {
+    @content;
+  }
+}
+
 @mixin desktop {
   @media screen and (min-width: 900px) {
     @content;
