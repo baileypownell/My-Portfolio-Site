@@ -100,6 +100,9 @@ import '../css/portfolio.scss';
   const REACT_WEIGHT_TRACKER = new Modal('mySlides7', 6);
   REACT_WEIGHT_TRACKER.showDivs(1);
 
+  const VIRTUAL_COOKBOOK = new Modal('mySlides8', 7);
+  VIRTUAL_COOKBOOK.showDivs(1);
+
   // event listeners on the document is more performant than having a bunch of event listerners on individual items: https://gomakethings.com/why-event-delegation-is-a-better-way-to-listen-for-events-in-vanilla-js/
 
   document.addEventListener('click', function (event) {
@@ -124,6 +127,9 @@ import '../css/portfolio.scss';
     if (event.target.matches('#react_weight_tracker')) {
       REACT_WEIGHT_TRACKER.openModal();
   	}
+    if (event.target.matches('#virtualCookbook')) {
+      VIRTUAL_COOKBOOK.openModal();
+  	}
   	if (event.target.matches('#closeOne')) {
       Beckley.closeModal();
   	}
@@ -144,6 +150,9 @@ import '../css/portfolio.scss';
   	}
     if (event.target.matches('#closeSeven')) {
   		REACT_WEIGHT_TRACKER.closeModal();
+  	}
+    if (event.target.matches('#closeEight')) {
+  		VIRTUAL_COOKBOOK.closeModal();
   	}
     if (event.target.matches('#forward')) {
       Beckley.navigateDivs(1);
@@ -187,6 +196,12 @@ import '../css/portfolio.scss';
     }
     if (event.target.matches('#backward7')) {
       REACT_WEIGHT_TRACKER.navigateDivs(-1);
+    }
+    if (event.target.matches('#forward8')) {
+      VIRTUAL_COOKBOOK.navigateDivs(1);
+    }
+    if (event.target.matches('#backward8')) {
+      VIRTUAL_COOKBOOK.navigateDivs(-1);
     }
 
   }, false);
